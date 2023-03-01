@@ -2,7 +2,7 @@ import React from "react";
 
 const Logo = () => {
   return (
-    <a href="" className="flex item-center gap-1">
+    <a href="" className="flex item-center gap-1 text-red-700">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
