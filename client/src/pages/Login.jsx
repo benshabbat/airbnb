@@ -10,7 +10,10 @@ const Login = () => {
         <input type="password" placeholder="password" />
         <button className="primary">Login</button>
         <div className="text-center py-2 text-gray-500">
-          Don't have an account yet? <Link className="underline text-blue-600" to="/register">Register Now</Link>
+          Don't have an account yet?
+          <Link className="underline text-blue-600" to="/register">
+            Register Now
+          </Link>
         </div>
       </form>
     </div>
