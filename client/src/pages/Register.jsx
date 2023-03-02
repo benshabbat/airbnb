@@ -11,10 +11,14 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // dispatch(register(formData));
+  };
   return (
     <div className="mt-32">
       <h1 className="text-4xl text-center mb-2">Register</h1>
-      <form className="max-w-md mx-auto">
+      <form className="max-w-md mx-auto" onSubmit={onSubmit}>
         <input
           type="text"
           placeholder="Full Name"
@@ -36,7 +40,7 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <button className="primary">Register</button>
+        <button className="primary" type="submit">Register</button>
         <div className="text-center py-2 text-gray-500">
           Do you have an account?
           <Link className="underline text-blue-600" to="/login">
