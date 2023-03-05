@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {login} from "../Utils"
+import { login } from "../Utils";
 const Login = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
     email: "",
     password: "",
   });
@@ -11,10 +10,9 @@ const Login = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    login("/login",formData)
-    // dispatch(register(formData));
+    await login("/login", formData);
   };
   return (
     <div className="mt-32">
@@ -34,7 +32,9 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button className="primary" type="submit">Login</button>
+        <button className="primary" type="submit">
+          Login
+        </button>
         <div className="text-center py-2 text-gray-500">
           Don't have an account yet?
           <Link className="underline text-blue-600" to="/register">

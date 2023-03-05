@@ -15,9 +15,6 @@ app.use(cors({
 
 
 app.use("/api/auth", authRoute);
-app.get("/test",(req,res)=>{
-    res.json("test ok")
-})
 
 
 app.listen(8080, () => {
