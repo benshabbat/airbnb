@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import {login} from "../Utils"
 const Login = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -13,6 +13,7 @@ const Login = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    login("/login",formData)
     // dispatch(register(formData));
   };
   return (

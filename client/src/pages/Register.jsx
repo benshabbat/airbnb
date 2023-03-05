@@ -13,7 +13,7 @@ const Register = () => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    register("register",formData)
+    register("/register",formData)
     // dispatch(register(formData));
   };
   return (
