@@ -1,7 +1,11 @@
 import express from "express";
 import cors from "cors"
+import dotenv from "dotenv";
+import connectDB from "./config/db.js"
 // import authRoute from "./routes/auth.js";
 const app= express();
+dotenv.config();
+
 
 app.use(express.json());
 app.use(cors({
@@ -19,4 +23,7 @@ app.post("/register",(req,res)=>{
     res.json({username,email,password})
 })
 
-app.listen(8080)
+app.listen(8080, () => {
+    connectDB();
+    console.log("connected to backend!");
+  });
