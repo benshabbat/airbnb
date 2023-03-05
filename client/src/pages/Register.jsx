@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {register} from "../Utils"
+import { register } from "../Utils";
 const Register = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -11,9 +11,9 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    register("/register",formData)
+    await register("/api/auth/register", formData);
     // dispatch(register(formData));
   };
   return (
@@ -41,7 +41,9 @@ const Register = () => {
           onChange={handleChange}
           required
         />
-        <button className="primary" type="submit">Register</button>
+        <button className="primary" type="submit">
+          Register
+        </button>
         <div className="text-center py-2 text-gray-500">
           Do you have an account?
           <Link className="underline text-blue-600" to="/login">

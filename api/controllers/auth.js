@@ -1,14 +1,14 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import { createError } from "../utils/error.js";
-import jwt from "jsonwebtoken";
+// import { createError } from "../utils/error.js";
+// import jwt from "jsonwebtoken";
 
 export const register = async (req, res, next) => {
-  const { username, phone, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-  //Check if User Exist
-  const userExists = await User.findOne({ username });
-  if (userExists) return next(createError(400, "User already Exists"));
+  // //Check if User Exist
+  // const userExists = await User.findOne({ username });
+  // if (userExists) return next(createError(400, "User already Exists"));
 
   // Hash password
   const salt = await bcrypt.genSalt(10);
@@ -18,13 +18,11 @@ export const register = async (req, res, next) => {
     const newUser = await User.create({
       username,
       email,
-      phone,
       password: hashedPassword,
     });
     res.status(200).json({
       _id: newUser.id,
       name: newUser.name,
-      phone: newUser.phone,
       email: newUser.email,
     });
   } catch (error) {
