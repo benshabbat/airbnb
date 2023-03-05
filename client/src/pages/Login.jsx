@@ -12,7 +12,7 @@ const Login = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await login("/login", formData);
+    await login("/api/auth/login", formData);
   };
   return (
     <div className="mt-32">
