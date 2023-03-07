@@ -1,30 +1,29 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../Utils";
+import { AuthContext } from "../context/AuthContext"
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  
-  const {loading, error, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate()
+
+  const { loading, error, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch({type:"LOGIN_START"})
-    try{
-        const res = await login("/api/auth/login", formData);
-        dispatch({type:"LOGIN_SUCCESS",payload:res.data})
-        navigate("/")
-    }catch(err)
-    {
-        dispatch({type:"LOGIN_FAIL",payload:err.response.data})
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await login("/api/auth/login", formData);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      navigate("/");
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAIL", payload: err.response.data });
     }
-    
   };
 
   return (
