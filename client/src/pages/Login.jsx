@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../Utils";
+import axios from "axios";
 import { AuthContext } from "../context/AuthContext"
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,9 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await login("/auth/login", formData);
+      const res = await axios.post("/auth/login", formData);
+      // const res = await login("/auth/login", formData);
+      console.log(res)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
