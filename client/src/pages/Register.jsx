@@ -13,7 +13,7 @@ const Register = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await register("/api/auth/register", formData);
+    await register("/auth/register", formData);
     // dispatch(register(formData));
   };
   return (

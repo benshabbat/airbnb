@@ -65,7 +65,6 @@ export const login = async (req, res, next) => {
   }
 };
 
-
 //logout
 export const logout = async (req, res) => {
   res
@@ -76,7 +75,6 @@ export const logout = async (req, res) => {
     .status(200)
     .send("User has been logged out.");
 };
-
 
 // Generate JWT
 const generateToken = (id, isAdmin) => {

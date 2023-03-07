@@ -18,11 +18,11 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await login("/api/auth/login", formData);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      const res = await login("/auth/login", formData);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
     } catch (err) {
-      dispatch({ type: "LOGIN_FAIL", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAIL", payload: err.response.data  });
     }
   };
 
@@ -47,6 +47,7 @@ const Login = () => {
         <button className="primary" type="submit">
           Login
         </button>
+        {error && <span>{error.message}</span>}
         <div className="text-center py-2 text-gray-500">
           Don't have an account yet?
           <Link className="underline text-blue-600" to="/register">

@@ -4,13 +4,13 @@ import App from "./App";
 import "./index.css";
 
 import { AuthContextProvider } from "./context/AuthContext";
-import { UserContextProvider } from "./context/UserContext";
+// import { UserContextProvider } from "./context/UserContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <UserContextProvider>
+      {/* <UserContextProvider> */}
         <App />
-      </UserContextProvider>
+      {/* </UserContextProvider> */}
     </AuthContextProvider>
   </React.StrictMode>
 );
