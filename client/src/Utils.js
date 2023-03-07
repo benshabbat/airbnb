@@ -1,30 +1,26 @@
 import axios from "axios";
 
 const getAll = (url) => {
-  axios.get(url);
+  return axios.get(url);
 };
 const getById = (url, id) => {
-  axios.get(`${url}/${id}`);
+  return axios.get(`${url}/${id}`);
+};
+const login = (obj) => {
+  return axios.post("/auth/login", obj);
+};
+const register = (obj) => {
+  return axios.post("/auth/register", obj);
 };
 const addItem = (url, obj) => {
-  axios.post(url, obj);
-};
-const register = (url, obj) => {
-  axios.post(url, obj);
-};
-const login = (url, obj) => {
-  axios.post(url, obj);
+  return axios.post(url, obj);
 };
 const updateItem = (url, id, obj) => {
-  axios.put(`${url}/${id}`, obj);
+  return axios.put(`${url}/${id}`, obj);
 };
 const deleteItem = (url, id) => {
-  axios.delete(`${url}/${id}`);
+  return axios.delete(`${url}/${id}`);
 };
-const getUserFullData = (id) => {
-  
-};
+const getUserFullData = (id) => {};
 
-
-
-export { getAll, getById, addItem, updateItem, deleteItem,register,login };
+export { getAll, getById, addItem, updateItem, deleteItem, register, login };

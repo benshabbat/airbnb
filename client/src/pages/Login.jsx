@@ -19,8 +19,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", formData);
-      // const res = await login("/auth/login", formData);
+      const res = await login(formData);
       console.log(res)
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       navigate("/");
