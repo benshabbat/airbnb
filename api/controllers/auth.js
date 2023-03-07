@@ -55,7 +55,7 @@ export const login = async (req, res, next) => {
         .json({
           _id: user.id,
           email: user.email,
-          token,
+          username:user.username,
         });
     } else {
       return next(createError(400, "Invalid credentials!"));

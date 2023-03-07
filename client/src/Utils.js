@@ -1,6 +1,6 @@
 import axios from "axios";
-const URL_LOGIN="/auth/login"
-const URL_REGISTER="/auth/register"
+const URL_LOGIN = "/auth/login";
+const URL_REGISTER = "/auth/register";
 const getAll = (url) => {
   return axios.get(url);
 };
