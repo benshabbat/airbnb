@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js"
 import authRoute from "./routes/auth.js";
+import usersRoute from "./routes/users.js";
 const app= express();
 dotenv.config();
 
@@ -16,7 +17,7 @@ app.use(cors({
 
 
 app.use("/api/auth", authRoute);
-
+app.use("/api/users", usersRoute);
 
 app.listen(8080, () => {
     connectDB();
