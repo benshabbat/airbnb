@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../Utils";
-import { AuthContext } from "../context/AuthContext"
+import { AuthContext } from "../context/AuthContext";
+import { UserContext } from "../context/UserContext";
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -9,6 +10,7 @@ const Login = () => {
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,12 +20,13 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const {data} = await login(formData);
-      console.log(data)
-      dispatch({ type: "LOGIN_SUCCESS", payload: data});
+      const { data } = await login(formData);
+      console.log(data);
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
+      setUser(data)
       navigate("/");
     } catch (err) {
-      dispatch({ type: "LOGIN_FAIL", payload: err.response.data  });
+      dispatch({ type: "LOGIN_FAIL", payload: err.response.data });
     }
   };
 

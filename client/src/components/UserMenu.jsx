@@ -1,11 +1,13 @@
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { UserContext } from "../context/UserContext";
 import { getById } from "../Utils";
 
 const UserMenu = () => {
-  const { user } = useContext(AuthContext);
-  // const [account, setAccount] = useState();
+  // const { user } = useContext(AuthContext);
+  const { user } = useContext(UserContext);
+  const [account, setAccount] = useState();
   // useEffect(() => {
   //   const fetchData = async () => {
   //     const { data } = await getById("/users", user._id);
