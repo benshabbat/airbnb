@@ -8,12 +8,12 @@ import usersRoute from "./routes/users.js";
 const app= express();
 dotenv.config();
 
-app.use(cookieParser());
-app.use(express.json());
 app.use(cors({
     credentials :true,
     origin :"http://127.0.0.1:5173",
 }))
+app.use(express.json());
+app.use(cookieParser());
 
 
 app.use("/api/auth", authRoute);

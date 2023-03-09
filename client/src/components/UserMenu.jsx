@@ -1,9 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { getById } from "../Utils";
 
 const UserMenu = () => {
   const { user } = useContext(AuthContext);
+  // const [account, setAccount] = useState();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await getById("/users", user._id);
+  //     setAccount(data);
+  //   };
+  //   fetchData();
+  // }, [user]);
+  // console.log(account);
+
   return (
     <div className="flex gap-2 items-center border border-gray-300 rounded-full px-4 py-2">
       <svg

@@ -45,7 +45,7 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button className="primary" type="submit">
+        <button disabled={loading} className="primary" type="submit">
           Login
         </button>
         {error && <span>{error.message}</span>}

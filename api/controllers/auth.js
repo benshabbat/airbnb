@@ -47,19 +47,16 @@ export const login = async (req, res, next) => {
       process.env.JWT
     );
 
-    if (user && isPassword) {
-      res
-        .cookie("access_token", token, {
-          httpOnly: true,
-        })
-        .json({
-          _id: user.id,
-          email: user.email,
-          username:user.username,
-        });
-    } else {
-      return next(createError(400, "Invalid credentials!"));
-    }
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200)
+      .json({
+        _id: user.id,
+        email: user.email,
+        username: user.username,
+      });
   } catch (error) {
     next(error);
   }
