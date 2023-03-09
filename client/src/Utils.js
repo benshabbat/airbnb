@@ -1,5 +1,6 @@
 import axios from "axios";
 const URL_LOGIN = "/auth/login";
+const URL_LOGOUT = "/auth/logout";
 const URL_REGISTER = "/auth/register";
 const getAll = (url) => {
   return axios.get(url);
@@ -9,6 +10,10 @@ const getById = (url, id) => {
 };
 const login = (obj) => {
   return axios.post(URL_LOGIN, obj);
+};
+const logout = () => {
+   axios.post(URL_LOGOUT);
+   localStorage.removeItem("user");
 };
 const register = (obj) => {
   return axios.post(URL_REGISTER, obj);
@@ -24,4 +29,4 @@ const deleteItem = (url, id) => {
 };
 const getUserFullData = (id) => {};
 
-export { getAll, getById, addItem, updateItem, deleteItem, register, login };
+export { getAll, getById, addItem, updateItem, deleteItem, register, login,logout };
