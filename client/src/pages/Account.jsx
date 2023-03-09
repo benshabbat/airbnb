@@ -3,12 +3,15 @@ import { AuthContext } from "../context/AuthContext";
 import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
 import { logout } from "../Utils";
 const Account = () => {
-  const { user } = useContext(AuthContext);
+  const { user,dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleLogout = async () => {
     await logout();
+    dispatch({ type: "LOGOUT" });
     navigate("/");
   };
+  
   if (!user) {
     <Navigate to="/login" />;
   }
