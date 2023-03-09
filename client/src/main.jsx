@@ -9,9 +9,9 @@ import { UserContextProvider } from "./context/UserContext";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <UserContextProvider>
+      {/* <UserContextProvider> */}
         <App />
-      </UserContextProvider>
+      {/* </UserContextProvider> */}
     </AuthContextProvider>
   </React.StrictMode>
 );

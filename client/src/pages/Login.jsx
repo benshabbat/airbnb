@@ -10,7 +10,7 @@ const Login = () => {
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
-  const { setUser } = useContext(UserContext);
+  // const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,9 +21,9 @@ const Login = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       const { data } = await login(formData);
-      console.log(data);
+      console.log("before login",data);
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
-      setUser(data)
+      // setUser(data)
       navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAIL", payload: err.response.data });

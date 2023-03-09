@@ -1,22 +1,9 @@
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { UserContext } from "../context/UserContext";
-import { getById } from "../Utils";
-
 const UserMenu = () => {
-  // const { user } = useContext(AuthContext);
-  const { user } = useContext(UserContext);
-  const [account, setAccount] = useState();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const { data } = await getById("/users", user._id);
-  //     setAccount(data);
-  //   };
-  //   fetchData();
-  // }, [user]);
-  // console.log(account);
-
+  const { user } = useContext(AuthContext);
+  console.log("after login",user)
   return (
     <div className="flex gap-2 items-center border border-gray-300 rounded-full px-4 py-2">
       <svg
@@ -34,7 +21,7 @@ const UserMenu = () => {
         />
       </svg>
       <Link
-        to="/login"
+        to={user?"/account":"/login"}
         className="bg-gray-400 rounded-full text-white border border-gray-400 overflow-hidden"
       >
         <svg

@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <a href="/" className="flex item-center gap-1 text-red-700">
+    <Link to="/" className="flex item-center gap-1 text-red-700">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -18,7 +19,7 @@ const Logo = () => {
         />
       </svg>
       <span className="font-bold text-xl">airbnb</span>
-    </a>
+    </Link>
   );
 };
 
