@@ -1,6 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import AddPlace from "../components/AddPlace";
 const Places = () => {
+  const { action } = useParams();
   return (
     <div>
       <div className="text-center ">
@@ -25,6 +27,7 @@ const Places = () => {
           Add new place
         </Link>
       </div>
+      {action === "new" && <AddPlace />}
     </div>
   );
 };

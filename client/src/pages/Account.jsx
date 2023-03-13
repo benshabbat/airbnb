@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 import Places from "./Places";
 import Profile from "./Profile";

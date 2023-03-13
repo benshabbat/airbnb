@@ -4,8 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Account from "./pages/Account";
-import Booking from "./components/Booking";
-import Places from "./components/Places";
 
 import axios from "axios";
 axios.defaults.baseURL = "http://127.0.0.1:8080/api";
