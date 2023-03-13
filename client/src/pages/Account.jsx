@@ -16,8 +16,12 @@ const Account = () => {
     sub = "profile";
   }
   const linkClasses = (type) => {
-    let classes = "inline-flex gap-1 py-2 px-6";
-    if (type === sub) classes += " bg-red-700 text-white rounded-full";
+    let classes = "inline-flex gap-1 py-2 px-6 rounded-full";
+    if (type === sub) {
+      classes += " bg-red-700 text-white";
+    } else {
+      classes += " bg-gray-200";
+    }
     return classes;
   };
   return (
