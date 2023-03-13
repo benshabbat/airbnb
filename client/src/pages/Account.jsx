@@ -1,17 +1,12 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, Navigate, useParams, useNavigate } from "react-router-dom";
-import { logout } from "../Utils";
-const Account = () => {
-  const { user,dispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    await logout();
-    dispatch({ type: "LOGOUT" });
-    navigate("/");
-  };
-  
+import Places from "./Places";
+import Profile from "./Profile";
+const Account = () => {
+  const { user } = useContext(AuthContext);
+
   if (!user) {
     <Navigate to="/login" />;
   }
@@ -38,14 +33,8 @@ const Account = () => {
           My Accommodations
         </Link>
       </nav>
-      {sub === "profile" && (
-        <div className="text-center m-w-lg mx-auto">
-          Logged in as {user.username} ({user.email})<br />
-          <button className="primary max-w-sm mt-2" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      )}
+      {sub === "profile" && <Profile user={user} />}
+      {sub === "places" && <Places />}
     </div>
   );
 };
