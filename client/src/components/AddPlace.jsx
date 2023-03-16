@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { MdPets,MdDoorFront } from "react-icons/md";
+import { FaParking } from "react-icons/fa";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -52,13 +53,13 @@ const AddPlace = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
-              class="w-8 h-8"
+              className="w-8 h-8"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
               />
             </svg>
@@ -81,22 +82,54 @@ const AddPlace = () => {
         <div>
           <label>
             <input type="checkbox" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
+              />
+            </svg>
             <span>Wifi</span>
           </label>
           <label>
             <input type="checkbox" />
+            <FaParking />
             <span>Free Parking spot</span>
           </label>
           <label>
             <input type="checkbox" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z"
+              />
+            </svg>
+
             <span>TV</span>
           </label>
           <label>
             <input type="checkbox" />
+            <MdPets />
             <span>Pets</span>
           </label>
           <label>
             <input type="checkbox" />
+            <MdDoorFront />
             <span>Private entrance</span>
           </label>
         </div>
