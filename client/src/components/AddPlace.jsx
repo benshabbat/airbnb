@@ -7,6 +7,13 @@ const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
     address: "",
+    photos: [],
+    description: "",
+    perks: [],
+    extraInfo: "",
+    checkIn: "",
+    checkOut: "",
+    maxGuests: 1,
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,12 +31,19 @@ const AddPlace = () => {
     { name: "Pets", icon: <MdPets /> },
     { name: "Private entrance", icon: <MdDoorFront /> },
   ];
+  const preInput = (header, desc) => {
+    return (
+      <>
+        <h2 className="text-xl mt-4">{header}</h2>
+        <p className="text-gray-500 text-sm">{desc}</p>
+      </>
+    );
+  };
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
       <form onSubmit={onSubmit}>
-        <h2 className="text-xl mt-4">Title</h2>
-        <p className="text-gray-500 text-sm">Title for your place</p>
+        {preInput("Title", "Title for your place")}
         <input
           type="text"
           placeholder="title"
@@ -37,8 +51,7 @@ const AddPlace = () => {
           onChange={handleChange}
           required
         />
-        <h2 className="text-xl mt-4">Address</h2>
-        <p className="text-gray-500 text-sm">Address for this place</p>
+        {preInput("Address", "Address for this place")}
         <input
           type="text"
           placeholder="address"
@@ -46,8 +59,7 @@ const AddPlace = () => {
           onChange={handleChange}
           required
         />
-        <h2 className="text-xl mt-4">Photos</h2>
-        <p className="text-gray-500 text-sm">more is better</p>
+        {preInput("Photos", "more is better")}
         <div className="flex gap-2">
           <input
             type="text"
@@ -77,8 +89,7 @@ const AddPlace = () => {
             Upload
           </button>
         </div>
-        <h2 className="text-xl mt-4">Description</h2>
-        <p className="text-gray-500 text-sm">Description of the place</p>
+        {preInput("Description", "Description of the place")}
         <textarea
           type="text"
           placeholder="description"
@@ -86,49 +97,62 @@ const AddPlace = () => {
           onChange={handleChange}
           required
         />
-        <h2 className="text-xl mt-4">Perks</h2>
-        <p className="text-gray-500 text-sm">
-          Select all the perks of your place
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          {perks?.map((perk, index) => {return(
-
-            <label key={index} className="border p-4">
-              <input type="checkbox" />
-              {perk.icon}
-              <span>{perk.name}</span>
-            </label>
-              )
+        {preInput("Perks", "Select all the perks of your place")}
+        <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {perks?.map((perk, index) => {
+            return (
+              <label
+                key={index}
+                className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer "
+              >
+                <input type="checkbox" />
+                {perk.icon}
+                <span>{perk.name}</span>
+              </label>
+            );
           })}
         </div>
-        <input
+        {preInput("Extra Info", "House rules, etc")}
+        <textarea
           type="text"
           placeholder="extraInfo"
           name="extraInfo"
           onChange={handleChange}
           required
         />
-        <input
-          type="number"
-          placeholder="checkIn"
-          name="checkIn"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          placeholder="checkOut"
-          name="checkOut"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="number"
-          placeholder="maxGuest"
-          name="maxGuest"
-          onChange={handleChange}
-          required
-        />
+        {preInput("Check In & Check out", "Add check in and out")}
+        <div className="grid gap-2 sm:grid-cols-3">
+          <div>
+            <h3 className="mt-2">Check In time</h3>
+            <input
+              type="number"
+              placeholder="14:00"
+              name="checkIn"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <h3 className="mt-2">Check Out time</h3>
+            <input
+              type="number"
+              placeholder="checkOut"
+              name="checkOut"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <h3 className="mt-2">Max number of guests</h3>
+            <input
+              type="number"
+              placeholder="maxGuests"
+              name="maxGuests"
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
         <button className="primary" type="submit">
           Add Place
         </button>

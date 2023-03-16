@@ -40,8 +40,9 @@ const PlaceSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    maxGuest: {
+    maxGuests: {
       type: Number,
+      default:1,
       required: true,
     },
   },
