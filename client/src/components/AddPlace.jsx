@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { MdPets,MdDoorFront } from "react-icons/md";
+import { MdPets, MdDoorFront } from "react-icons/md";
 import { FaParking } from "react-icons/fa";
+import { BiRadio, BiWifi } from "react-icons/bi";
+import { CgScreen } from "react-icons/cg";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -13,6 +15,15 @@ const AddPlace = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
   };
+
+  const perks = [
+    { name: "Wifi", icon: <BiWifi /> },
+    { name: "Free Parking spot", icon: <FaParking /> },
+    { name: "TV", icon: <CgScreen /> },
+    { name: "Radio", icon: <BiRadio /> },
+    { name: "Pets", icon: <MdPets /> },
+    { name: "Private entrance", icon: <MdDoorFront /> },
+  ];
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
@@ -79,59 +90,16 @@ const AddPlace = () => {
         <p className="text-gray-500 text-sm">
           Select all the perks of your place
         </p>
-        <div>
-          <label>
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"
-              />
-            </svg>
-            <span>Wifi</span>
-          </label>
-          <label>
-            <input type="checkbox" />
-            <FaParking />
-            <span>Free Parking spot</span>
-          </label>
-          <label>
-            <input type="checkbox" />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z"
-              />
-            </svg>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {perks?.map((perk, index) => {return(
 
-            <span>TV</span>
-          </label>
-          <label>
-            <input type="checkbox" />
-            <MdPets />
-            <span>Pets</span>
-          </label>
-          <label>
-            <input type="checkbox" />
-            <MdDoorFront />
-            <span>Private entrance</span>
-          </label>
+            <label key={index} className="border p-4">
+              <input type="checkbox" />
+              {perk.icon}
+              <span>{perk.name}</span>
+            </label>
+              )
+          })}
         </div>
         <input
           type="text"
