@@ -88,7 +88,7 @@ const AddPlace = () => {
           required
         />
         {preInput("Perks", "Select all the perks of your place")}
-        <Perks />
+        <Perks handleChange={handleChange}/>
         {preInput("Extra Info", "House rules, etc")}
         <textarea
           type="text"

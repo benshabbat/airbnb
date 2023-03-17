@@ -3,7 +3,7 @@ import { MdPets, MdDoorFront } from "react-icons/md";
 import { FaParking } from "react-icons/fa";
 import { BiRadio, BiWifi } from "react-icons/bi";
 import { CgScreen } from "react-icons/cg";
-const Perks = () => {
+const Perks = ({handleChange}) => {
   const perks = [
     { name: "Wifi", icon: <BiWifi /> },
     { name: "Free Parking spot", icon: <FaParking /> },
@@ -20,7 +20,7 @@ const Perks = () => {
             key={index}
             className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer "
           >
-            <input type="checkbox" />
+            <input type="checkbox" onChange={handleChange} />
             {perk.icon}
             <span>{perk.name}</span>
           </label>
