@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import {uploadImage} from "../Utils"
 import Perks from "./Perks";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +13,7 @@ const AddPlace = () => {
     checkOut: "",
     maxGuests: 1,
   });
+  const [photoLink, setPhotoLink] = useState("")
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -29,6 +30,10 @@ const AddPlace = () => {
       </>
     );
   };
+
+  const addPhotoLink = async()=>{
+    await uploadImage(photoLink)
+  }
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
