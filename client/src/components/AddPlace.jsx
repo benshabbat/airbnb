@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { MdPets, MdDoorFront } from "react-icons/md";
-import { FaParking } from "react-icons/fa";
-import { BiRadio, BiWifi } from "react-icons/bi";
-import { CgScreen } from "react-icons/cg";
+
+import Perks from "./Perks";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -23,14 +21,6 @@ const AddPlace = () => {
     e.preventDefault();
   };
 
-  const perks = [
-    { name: "Wifi", icon: <BiWifi /> },
-    { name: "Free Parking spot", icon: <FaParking /> },
-    { name: "TV", icon: <CgScreen /> },
-    { name: "Radio", icon: <BiRadio /> },
-    { name: "Pets", icon: <MdPets /> },
-    { name: "Private entrance", icon: <MdDoorFront /> },
-  ];
   const preInput = (header, desc) => {
     return (
       <>
@@ -98,20 +88,7 @@ const AddPlace = () => {
           required
         />
         {preInput("Perks", "Select all the perks of your place")}
-        <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          {perks?.map((perk, index) => {
-            return (
-              <label
-                key={index}
-                className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer "
-              >
-                <input type="checkbox" />
-                {perk.icon}
-                <span>{perk.name}</span>
-              </label>
-            );
-          })}
-        </div>
+        <Perks />
         {preInput("Extra Info", "House rules, etc")}
         <textarea
           type="text"
