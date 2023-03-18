@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {uploadImage} from "../Utils"
+import { uploadImage } from "../Utils";
 import Perks from "./Perks";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const AddPlace = () => {
     checkOut: "",
     maxGuests: 1,
   });
-  const [photoLink, setPhotoLink] = useState("")
+  const [photoLink, setPhotoLink] = useState("");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -31,9 +31,12 @@ const AddPlace = () => {
     );
   };
 
-  const addPhotoLink = async()=>{
-    await uploadImage(photoLink)
-  }
+  const addPhotoLink = async (e) => {
+    e.preventDefault();
+    const { data } = await uploadImage(photoLink);
+    setFormData((prev) => ({photos:[...prev ,data] }));
+    console.log(formData);
+  };
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
@@ -60,10 +63,16 @@ const AddPlace = () => {
             type="text"
             placeholder="Add using a link ...jpg"
             name="photos"
-            onChange={handleChange}
+            onChange={(e) => setPhotoLink(e.target.value)}
+            // onChange={handleChange}
             required
           />
-          <button className="bg-gray-200 px-4 rounded-2xl">Add Photo</button>
+          <button
+            className="bg-gray-200 px-4 rounded-2xl"
+            onClick={addPhotoLink}
+          >
+            Add Photo
+          </button>
         </div>
         <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           <button className="flex justify-center gap-1 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
@@ -93,7 +102,7 @@ const AddPlace = () => {
           required
         />
         {preInput("Perks", "Select all the perks of your place")}
-        <Perks handleChange={handleChange}/>
+        <Perks handleChange={handleChange} />
         {preInput("Extra Info", "House rules, etc")}
         <textarea
           type="text"
