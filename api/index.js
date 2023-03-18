@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
-app.use("/api/place", placeRoute);
+app.use("/api/places", placeRoute);
 
 app.listen(8080, () => {
     connectDB();
