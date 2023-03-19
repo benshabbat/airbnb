@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { uploadImage } from "../Utils";
 import Perks from "./Perks";
+import axios from "axios";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -30,11 +31,21 @@ const AddPlace = () => {
       </>
     );
   };
+  const setPhotos=(data)=>{
+    if (formData.photos.length > 0) {
+      setFormData((prevState) => ({ ...prevState, photos: [...photos, data] }));
+    } else {
+      setFormData((prevState) => ({ ...prevState, photos: data }));
+    }
+  }
 
   const addPhotoLink = async (e) => {
     e.preventDefault();
-    const { data } = await uploadImage(photoLink);
-    setFormData((prev) => ({photos:[...prev ,data] }));
+    console.log(photoLink);
+    const { data } = await uploadImage({ link: photoLink });
+    // const { data } = await axios.post("/places/upload-link",{link:photoLink});
+    console.log(data);
+    setPhotos(data)
     console.log(formData);
   };
   return (
