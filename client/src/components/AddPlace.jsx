@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { uploadImage } from "../Utils";
 import Perks from "./Perks";
-import axios from "axios";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -15,6 +14,7 @@ const AddPlace = () => {
     maxGuests: 1,
   });
   const [photoLink, setPhotoLink] = useState("");
+  const [photos, setPhotos] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -31,21 +31,18 @@ const AddPlace = () => {
       </>
     );
   };
-  const setPhotos=(data)=>{
-    if (formData.photos.length > 0) {
-      setFormData((prevState) => ({ ...prevState, photos: [...photos, data] }));
-    } else {
-      setFormData((prevState) => ({ ...prevState, photos: data }));
-    }
-  }
 
   const addPhotoLink = async (e) => {
     e.preventDefault();
     console.log(photoLink);
     const { data } = await uploadImage({ link: photoLink });
-    // const { data } = await axios.post("/places/upload-link",{link:photoLink});
     console.log(data);
-    setPhotos(data)
+    setPhotos((prev) => {
+      return [...prev, data];
+    });
+    setFormData((prevState) => ({ ...prevState, photos: [...photos, data] }));
+    setPhotoLink("");
+    console.log(photos);
     console.log(formData);
   };
   return (
@@ -74,6 +71,7 @@ const AddPlace = () => {
             type="text"
             placeholder="Add using a link ...jpg"
             name="photos"
+            value={photoLink}
             onChange={(e) => setPhotoLink(e.target.value)}
             // onChange={handleChange}
             required
@@ -86,6 +84,10 @@ const AddPlace = () => {
           </button>
         </div>
         <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          {photos.length > 0 &&
+            photos.map((photo) => {
+              <div>{photo}</div>;
+            })}
           <button className="flex justify-center gap-1 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"

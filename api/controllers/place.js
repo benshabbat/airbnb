@@ -2,7 +2,7 @@ import imageDownloader from "image-downloader";
 
 export const uploadByLink = async (req, res, next) => {
   const { link } = req.body;
-  const newName = "photo " + Date.now() + ".jpg";
+  const newName = "photo" + Date.now() + ".jpg";
   try {
     await imageDownloader.image({
       url: link,
