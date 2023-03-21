@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import AddPlace from "../components/AddPlace";
 const Places = () => {
   const { action } = useParams();
@@ -28,6 +28,7 @@ const Places = () => {
         </Link>
       </div>
       {action === "new" && <AddPlace />}
+      <Outlet/>
     </div>
   );
 };

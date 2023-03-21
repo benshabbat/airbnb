@@ -14,7 +14,7 @@ const AddPlace = () => {
     maxGuests: 1,
   });
   const [photoLink, setPhotoLink] = useState("");
-  const [photos, setPhotos] = useState([]);
+  const [addedPhotos, setAddedPhotos] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -37,14 +37,17 @@ const AddPlace = () => {
     console.log(photoLink);
     const { data } = await uploadImage({ link: photoLink });
     console.log(data);
-    setPhotos((prev) => {
+    setAddedPhotos((prev) => {
       return [...prev, data];
     });
-    setFormData((prevState) => ({ ...prevState, photos: [...photos, data] }));
-    setPhotoLink("");
-    console.log(photos);
+    // setFormData((prevState) => ({
+    //   ...prevState,
+    //   photos: [...photos, filename],
+    // }));
+    console.log(addedPhotos);
     console.log(formData);
   };
+
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
@@ -55,7 +58,7 @@ const AddPlace = () => {
           placeholder="title"
           name="title"
           onChange={handleChange}
-          required
+          // required
         />
         {preInput("Address", "Address for this place")}
         <input
@@ -63,7 +66,7 @@ const AddPlace = () => {
           placeholder="address"
           name="address"
           onChange={handleChange}
-          required
+          // required
         />
         {preInput("Photos", "more is better")}
         <div className="flex gap-2">
@@ -74,7 +77,7 @@ const AddPlace = () => {
             value={photoLink}
             onChange={(e) => setPhotoLink(e.target.value)}
             // onChange={handleChange}
-            required
+            // required
           />
           <button
             className="bg-gray-200 px-4 rounded-2xl"
@@ -84,10 +87,13 @@ const AddPlace = () => {
           </button>
         </div>
         <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {photos.length > 0 &&
-            photos.map((photo) => {
-              <div>{photo}</div>;
-            })}
+          {addedPhotos.length > 0 &&
+            addedPhotos.map((link) => {
+             return( <div>
+                <img src={"http://localhost:8080/api/uploads/" + link} />
+              </div>)
+            }
+            )}
           <button className="flex justify-center gap-1 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +118,7 @@ const AddPlace = () => {
           placeholder="description"
           name="description"
           onChange={handleChange}
-          required
+          // required
         />
         {preInput("Perks", "Select all the perks of your place")}
         <Perks handleChange={handleChange} />
@@ -122,7 +128,7 @@ const AddPlace = () => {
           placeholder="extraInfo"
           name="extraInfo"
           onChange={handleChange}
-          required
+          // required
         />
         {preInput("Check In & Check out", "Add check in and out")}
         <div className="grid gap-2 sm:grid-cols-3">
@@ -133,7 +139,7 @@ const AddPlace = () => {
               placeholder="14:00"
               name="checkIn"
               onChange={handleChange}
-              required
+              // required
             />
           </div>
           <div>
@@ -143,7 +149,7 @@ const AddPlace = () => {
               placeholder="checkOut"
               name="checkOut"
               onChange={handleChange}
-              required
+              // required
             />
           </div>
           <div>
@@ -153,7 +159,7 @@ const AddPlace = () => {
               placeholder="maxGuests"
               name="maxGuests"
               onChange={handleChange}
-              required
+              // required
             />
           </div>
         </div>

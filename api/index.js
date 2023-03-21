@@ -11,7 +11,8 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use('/uploads', express.static('C:/Users/benshabbat/Desktop/Project_for_Portfolio/airbnb/api/uploads/'));
+app.use('/api/uploads', express.static('C:/Users/benshabbat/Desktop/Project_for_Portfolio/airbnb/api/uploads/'));
+// app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(cors({
     credentials :true,
     origin :"http://127.0.0.1:5173",
