@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { uploadImageByLink } from "../Utils";
+import { uploadImageByLink, uploadImages } from "../Utils";
 import Perks from "./Perks";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 const AddPlace = () => {
@@ -41,7 +41,7 @@ const AddPlace = () => {
     setPhotos((prev) => {
       return [...prev, data];
     });
-    setPhotoLink("")
+    setPhotoLink("");
     // setFormData((prevState) => ({
     //   ...prevState,
     //   photos: [...photos, data],
@@ -49,7 +49,16 @@ const AddPlace = () => {
     console.log(photos);
     // console.log(formData);
   };
-  const uploadPhoto = () => {};
+  const uploadPhoto = async (e) => {
+    const { files } = e.target;
+    console.log(files);
+    const fData = new FormData();
+    fData.set("photos", files);
+    const {data} =await uploadImages(fData);
+    setPhotos((prev) => {
+      return [...prev, data];
+    });
+  };
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
