@@ -1,4 +1,5 @@
 import imageDownloader from "image-downloader";
+import multer from "multer"
 
 export const uploadByLink = async (req, res, next) => {
   const { link } = req.body;
