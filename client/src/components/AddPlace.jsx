@@ -14,7 +14,7 @@ const AddPlace = () => {
     maxGuests: 1,
   });
   const [photoLink, setPhotoLink] = useState("");
-  const [addedPhotos, setAddedPhotos] = useState([]);
+  const [photos, setPhotos] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -37,15 +37,15 @@ const AddPlace = () => {
     console.log(photoLink);
     const { data } = await uploadImage({ link: photoLink });
     console.log(data);
-    setAddedPhotos((prev) => {
+    setPhotos((prev) => {
       return [...prev, data];
     });
     // setFormData((prevState) => ({
     //   ...prevState,
-    //   photos: [...photos, filename],
+    //   photos: [...photos, data],
     // }));
-    console.log(addedPhotos);
-    console.log(formData);
+    console.log(photos);
+    // console.log(formData);
   };
 
   return (
@@ -87,9 +87,9 @@ const AddPlace = () => {
           </button>
         </div>
         <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {addedPhotos.length > 0 &&
-            addedPhotos.map((link) => {
-             return( <div>
+          {photos.length > 0 &&
+            photos.map((link,index) => {
+             return( <div key={index}>
                 <img src={"http://localhost:8080/api/uploads/" + link} />
               </div>)
             }
