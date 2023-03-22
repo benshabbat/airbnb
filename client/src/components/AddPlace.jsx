@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { uploadImage } from "../Utils";
+import { uploadImageByLink } from "../Utils";
 import Perks from "./Perks";
+import { AiOutlineCloudUpload } from "react-icons/ai";
 const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -35,11 +36,12 @@ const AddPlace = () => {
   const addPhotoLink = async (e) => {
     e.preventDefault();
     console.log(photoLink);
-    const { data } = await uploadImage({ link: photoLink });
+    const { data } = await uploadImageByLink({ link: photoLink });
     console.log(data);
     setPhotos((prev) => {
       return [...prev, data];
     });
+    setPhotoLink("")
     // setFormData((prevState) => ({
     //   ...prevState,
     //   photos: [...photos, data],
@@ -47,7 +49,7 @@ const AddPlace = () => {
     console.log(photos);
     // console.log(formData);
   };
-
+  const uploadPhoto = () => {};
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
@@ -86,31 +88,23 @@ const AddPlace = () => {
             Add Photo
           </button>
         </div>
-        <div className="mt-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {photos.length > 0 &&
-            photos.map((link,index) => {
-             return( <div key={index}>
-                <img src={"http://localhost:8080/api/uploads/" + link} />
-              </div>)
-            }
-            )}
-          <button className="flex justify-center gap-1 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-8 h-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
-              />
-            </svg>
+            photos.map((link, index) => {
+              return (
+                <div key={index}>
+                  <img
+                    className="rounded-2xl"
+                    src={"http://localhost:8080/api/uploads/" + link}
+                  />
+                </div>
+              );
+            })}
+          <label className="flex item-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
+            <input type="file" className="hidden" onChange={uploadPhoto} />
+            <AiOutlineCloudUpload />
             Upload
-          </button>
+          </label>
         </div>
         {preInput("Description", "Description of the place")}
         <textarea

@@ -19,7 +19,7 @@ const logout = () => {
 const register = (obj) => {
   return axios.post(URL_REGISTER, obj);
 };
-const uploadImage = (obj) => {
+const uploadImageByLink = (obj) => {
   return axios.post(URL_UPLOADIMAGE, obj);
 };
 const addItem = (url, obj) => {
@@ -33,4 +33,4 @@ const deleteItem = (url, id) => {
 };
 const getUserFullData = (id) => {};
 
-export { getAll, getById, addItem, updateItem, deleteItem, register, login,logout,uploadImage };
+export { getAll, getById, addItem, updateItem, deleteItem, register, login,logout,uploadImageByLink };
