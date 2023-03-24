@@ -53,10 +53,12 @@ const AddPlace = () => {
     const { files } = e.target;
     console.log(files);
     const fData = new FormData();
-    fData.set("photos", files);
-    const {data} =await uploadImages(fData);
+    for (let i = 0; i < files.length; i++) {
+      fData.append("photos", files[i]);
+    }
+    const { data } = await uploadImages(fData);
     setPhotos((prev) => {
-      return [...prev, data];
+      return [...prev, ...data];
     });
   };
   return (
@@ -110,7 +112,7 @@ const AddPlace = () => {
               );
             })}
           <label className="flex item-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
-            <input type="file" className="hidden" onChange={uploadPhoto} />
+            <input type="file" className="hidden" onChange={uploadPhoto} multiple />
             <AiOutlineCloudUpload />
             Upload
           </label>
