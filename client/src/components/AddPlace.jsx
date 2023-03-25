@@ -16,6 +16,7 @@ const AddPlace = () => {
   });
   const [photoLink, setPhotoLink] = useState("");
   const [photos, setPhotos] = useState([]);
+  const [perks, setPerks] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -41,11 +42,13 @@ const AddPlace = () => {
     setPhotos((prev) => {
       return [...prev, data];
     });
+    setFormData((prevState) => ({ ...prevState, photos }));
     setPhotoLink("");
     // setFormData((prevState) => ({
     //   ...prevState,
     //   photos: [...photos, data],
     // }));
+    
     console.log(photos);
     // console.log(formData);
   };
@@ -60,6 +63,7 @@ const AddPlace = () => {
     setPhotos((prev) => {
       return [...prev, ...data];
     });
+    setFormData((prevState) => ({ ...prevState, photos }));
   };
   return (
     <div>
@@ -126,7 +130,7 @@ const AddPlace = () => {
           // required
         />
         {preInput("Perks", "Select all the perks of your place")}
-        <Perks handleChange={handleChange} />
+        <Perks selected={perks} handleChange={setPerks} />
         {preInput("Extra Info", "House rules, etc")}
         <textarea
           type="text"
