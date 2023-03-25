@@ -1,5 +1,4 @@
 import imageDownloader from "image-downloader";
-import fs from "fs";
 
 export const uploadByLink = async (req, res, next) => {
   const { link } = req.body;
@@ -20,12 +19,9 @@ export const uploadByLink = async (req, res, next) => {
 export const upload = async (req, res, next) => {
   const uploadedFiles = [];
   for (let i = 0; i < req.files.length; i++) {
-    const { path, originalname } = req.files[i];
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    uploadedFiles.push(newPath.replace("uploads", ""));
+    const { originalname } = req.files[i];
+
+    uploadedFiles.push(originalname);
   }
   res.json(uploadedFiles);
 };
