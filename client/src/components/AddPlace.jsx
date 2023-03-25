@@ -103,15 +103,15 @@ const AddPlace = () => {
           {photos.length > 0 &&
             photos.map((link, index) => {
               return (
-                <div key={index}>
+                <div key={index} className="h-32 flex">
                   <img
-                    className="rounded-2xl"
+                    className="rounded-2xl w-full"
                     src={"http://localhost:8080/api/uploads/" + link}
                   />
                 </div>
               );
             })}
-          <label className="flex item-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
+          <label className="flex h-32 item-center justify-center  gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
             <input type="file" className="hidden" onChange={uploadPhoto} multiple />
             <AiOutlineCloudUpload />
             Upload
