@@ -105,7 +105,7 @@ const AddPlace = () => {
               return (
                 <div key={index} className="h-32 flex">
                   <img
-                    className="rounded-2xl w-full"
+                    className="rounded-2xl w-full object-cover"
                     src={"http://localhost:8080/api/uploads/" + link}
                   />
                 </div>
