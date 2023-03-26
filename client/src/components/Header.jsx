@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import SearchWidget from "./SearchWidget";
 import UserMenu from "./UserMenu";
 import { Outlet } from "react-router-dom";
+
 const Header = () => {
   return (
     <>

@@ -30,7 +30,7 @@ const uploadImages = (obj) => {
   });
 };
 const createPlace = (obj,id) => {
-  return axios.post(URL_CREATE_PLACE/`${id}`, obj);
+  return axios.post(`${URL_CREATE_PLACE}/${id}`, obj);
 };
 const updateItem = (url, id, obj) => {
   return axios.put(`${url}/${id}`, obj);
