@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
-const AddPlace = () => {
+import { createPlace } from "../Utils";
+const AddPlace = ({user}) => {
+  const [photos, setPhotos] = useState([]);
+  const [perks, setPerks] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     address: "",
@@ -14,14 +17,13 @@ const AddPlace = () => {
     maxGuests: 1,
   });
 
-  const [photos, setPhotos] = useState([]);
-  const [perks, setPerks] = useState([]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    const {data} = await createPlace(formData,user._id);
   };
 
   const preInput = (header, desc) => {

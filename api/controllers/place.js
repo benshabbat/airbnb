@@ -1,5 +1,7 @@
 import imageDownloader from "image-downloader";
 import fs from "fs";
+import Place from "../models/Place.js";
+import User from "../models/User.js";
 
 export const uploadByLink = async (req, res, next) => {
   const { link } = req.body;
@@ -29,4 +31,22 @@ export const upload = async (req, res, next) => {
     uploadedFiles.push(originalname);
   }
   res.json(uploadedFiles);
+};
+
+export const createPlace = async (req, res, next) => {
+  const userId = req.params.userId;
+  const newPlace = new Place({...req.body, owner: userId});
+  try {
+    const savedPlace = await newPlace.save();
+    try{
+      await User.findByIdAndUpdate(userId, {
+        $push:{places:[savedPlace._id]}
+      })
+    }catch(err){
+      next(err);
+    }
+    res.status(200).json(savedPlace);
+  } catch (err) {
+    next(err);
+  }
 };

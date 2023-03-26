@@ -80,7 +80,7 @@ const Account = () => {
         </Link>
       </nav>
       {sub === "profile" && <Profile user={user} />}
-      {sub === "places" && <Places />}
+      {sub === "places" && <Places  user={user}/>}
     </div>
   );
 };

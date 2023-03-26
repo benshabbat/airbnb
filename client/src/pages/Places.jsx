@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import AddPlace from "../components/AddPlace";
-const Places = () => {
+const Places = ({user}) => {
   const { action } = useParams();
   return (
     <div>
@@ -27,7 +27,7 @@ const Places = () => {
           Add new place
         </Link>
       </div>
-      {action === "new" && <AddPlace />}
+      {action === "new" && <AddPlace user={user} />}
       <Outlet/>
     </div>
   );
