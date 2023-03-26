@@ -50,3 +50,20 @@ export const createPlace = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getPlace = async (req, res, next) => {
+  try {
+    const place = await Place.findById(req.params.id);
+    res.status(200).json(place);
+  } catch (error) {
+    next(error);
+  }
+};
+export const getPlaces = async (req, res, next) => {
+  try {
+    const places = await Place.find();
+    res.status(200).json(places);
+  } catch (error) {
+    next(error);
+  }
+};
