@@ -5,15 +5,15 @@ const AddPlace = () => {
   const [formData, setFormData] = useState({
     title: "",
     address: "",
-    photos: [],
+    photos,
     description: "",
-    perks: [],
+    perks,
     extraInfo: "",
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
   });
-  const [photoLink, setPhotoLink] = useState("");
+
   const [photos, setPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   const handleChange = (e) => {
@@ -54,7 +54,7 @@ const AddPlace = () => {
           // required
         />
         {preInput("Photos", "more is better")}
-        <UploadPhotos setPhotos={setPhotos} setPhotoLink={setPhotoLink} photoLink={photoLink} photos={photos} />
+        <UploadPhotos setPhotos={setPhotos} photos={photos} />
         {preInput("Description", "Description of the place")}
         <textarea
           type="text"
@@ -64,7 +64,7 @@ const AddPlace = () => {
           // required
         />
         {preInput("Perks", "Select all the perks of your place")}
-        <Perks selected={perks} handleChange={setPerks} />
+        <Perks selected={perks} setPerks={setPerks} />
         {preInput("Extra Info", "House rules, etc")}
         <textarea
           type="text"

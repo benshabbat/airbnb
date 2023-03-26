@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { uploadImageByLink, uploadImages } from "../Utils";
-const UploadPhotos = ({setPhotoLink,setPhotos,photoLink,photos}) => {
+const UploadPhotos = ({ setPhotos, photos }) => {
+  const [photoLink, setPhotoLink] = useState("");
   const addPhotoLink = async (e) => {
     e.preventDefault();
     console.log(photoLink);
@@ -42,8 +43,6 @@ const UploadPhotos = ({setPhotoLink,setPhotos,photoLink,photos}) => {
           name="photos"
           value={photoLink}
           onChange={(e) => setPhotoLink(e.target.value)}
-          // onChange={handleChange}
-          // required
         />
         <button className="bg-gray-200 px-4 rounded-2xl" onClick={addPhotoLink}>
           Add Photo

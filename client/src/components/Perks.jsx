@@ -3,7 +3,7 @@ import { MdPets, MdDoorFront } from "react-icons/md";
 import { FaParking } from "react-icons/fa";
 import { BiRadio, BiWifi } from "react-icons/bi";
 import { CgScreen } from "react-icons/cg";
-const Perks = ({ selected, handleChange }) => {
+const Perks = ({ selected, setPerks }) => {
   const perks = [
     { name: "Wifi", icon: <BiWifi /> },
     { name: "Free Parking spot", icon: <FaParking /> },
@@ -15,10 +15,10 @@ const Perks = ({ selected, handleChange }) => {
   const handleCheckBoxClick = (e) => {
     const { checked, name } = e.target;
     if (checked) {
-      handleChange([...selected, name]);
+      setPerks([...selected, name]);
     }
     else{
-      handleChange([...selected.filter(selectedName=>selectedName!==name)]);
+      setPerks([...selected.filter(selectedName=>selectedName!==name)]);
     }
     console.log(selected)
   };
