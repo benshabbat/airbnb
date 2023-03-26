@@ -67,7 +67,7 @@ const UploadPhotos = ({ setPhotos, photos }) => {
             onChange={uploadPhoto}
             multiple
           />
-          <AiOutlineCloudUpload />
+          <AiOutlineCloudUpload className="h-6 w-6" />
           Upload
         </label>
       </div>

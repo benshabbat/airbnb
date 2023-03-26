@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
 import { createPlace } from "../Utils";
+import { useNavigate } from "react-router-dom";
 const AddPlace = ({user}) => {
   const [photos, setPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
@@ -16,6 +17,7 @@ const AddPlace = ({user}) => {
     checkOut: "",
     maxGuests: 1,
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +25,8 @@ const AddPlace = ({user}) => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    const {data} = await createPlace(formData,user._id);
+    await createPlace(formData,user._id);
+    navigate("/account/places")
   };
 
   const preInput = (header, desc) => {
