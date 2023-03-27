@@ -10,9 +10,9 @@ router.post("/upload-link", verifyToken, uploadByLink);
 //CREATE
 router.post("/:userId",verifyToken,createPlace);
 //GET
+router.get("/place/:id", getPlace);
 router.get("/:ownerId", getPlacesByOwner);
 //GET
-router.get("/:id", getPlace);
 //GET ALL
 router.get("/", getPlaces);
 // router.get("/profile",profile);

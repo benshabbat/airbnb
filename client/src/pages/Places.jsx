@@ -12,7 +12,7 @@ const Places = ({ user }) => {
       setPlaces(data);
     };
     fetchData();
-  }, [places]);
+  }, []);
 
   const { action } = useParams();
   return (

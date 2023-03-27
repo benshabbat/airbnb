@@ -32,6 +32,7 @@ const Perks = ({ selected, setPerks }) => {
           >
             <input
               type="checkbox"
+              checked={selected.includes(perk.name)}
               name={perk.name}
               onChange={handleCheckBoxClick}
             />

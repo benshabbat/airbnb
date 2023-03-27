@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
 import { createPlace } from "../Utils";
 import { useNavigate } from "react-router-dom";
-const AddPlace = ({ user }) => {
+import { getPlaceById } from "../Utils";
+const AddPlace = ({ user, place }) => {
+  useEffect(() => {
+    if(place){
+
+      const fetchData = async () => {
+        const { data } = await getPlaceById(place?._id);
+        setFormData(data);
+      };
+      fetchData();
+    }
+  }, [place?._id]);
+
   const [photos, setPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   const [formData, setFormData] = useState({
@@ -47,6 +59,7 @@ const AddPlace = ({ user }) => {
       <input
         type={type}
         placeholder={name}
+        value={name}
         name={name}
         onChange={handleChange}
         // required
@@ -58,6 +71,7 @@ const AddPlace = ({ user }) => {
       <textarea
         type={type}
         placeholder={name}
+        value={name}
         name={name}
         onChange={handleChange}
         // required

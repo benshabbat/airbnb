@@ -6,6 +6,7 @@ const URL_UPLOAD_IMAGE_BY_LINK ="/places/upload-link"
 const URL_UPLOAD ="/places/upload"
 const URL_CREATE_PLACE ="/places"
 const URL_PLACES ="/places"
+const URL_PLACE ="/places/place"
 const getPlaces = () => {
   return axios.get(URL_PLACES);
 };
@@ -16,7 +17,7 @@ const getPlacesByOwner = (id) => {
   return axios.get(`${URL_PLACES}/${id}`);
 };
 const getPlaceById = (id) => {
-  return axios.get(`${URL_PLACES}/${id}`);
+  return axios.get(`${URL_PLACE}/${id}`);
 };
 const login = (obj) => {
   return axios.post(URL_LOGIN, obj);
