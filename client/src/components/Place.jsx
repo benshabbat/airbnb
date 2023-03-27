@@ -9,7 +9,15 @@ const Place = ({ place }) => {
       <Link to={place._id} className="flex flex-col gap-4 bg-gray-100 p-4 rounded-2xl">
         <div className="w-32 h-32 grow shrink-0">
           {place.photos?.map((link, index) => {
-            return <Photo key={index} link={link} />;
+            return (
+            // <Photo key={index} link={link} />
+            <div key={index} className="flex h-32 w-32 ">
+            <img
+              className="rounded-2xl w-full object-cover"
+              src={"http://localhost:8080/api/uploads/" + link}
+            />
+          </div>
+            )
           })}
         </div>
         <div className="grow-0 shrink">

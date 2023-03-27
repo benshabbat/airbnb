@@ -12,7 +12,10 @@ const getPlaces = () => {
 const getById = (url, id) => {
   return axios.get(`${url}/${id}`);
 };
-const getPlacesById = (id) => {
+const getPlacesByOwner = (id) => {
+  return axios.get(`${URL_PLACES}/${id}`);
+};
+const getPlaceById = (id) => {
   return axios.get(`${URL_PLACES}/${id}`);
 };
 const login = (obj) => {
@@ -43,4 +46,4 @@ const deleteItem = (url, id) => {
   return axios.delete(`${url}/${id}`);
 };
 
-export { getPlaces,getPlacesById, getById, createPlace, updateItem, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
+export { getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updateItem, deleteItem, register, login,logout,uploadImageByLink,uploadImages };

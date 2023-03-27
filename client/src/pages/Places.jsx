@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, Outlet, useParams } from "react-router-dom";
 import AddPlace from "../components/AddPlace";
 import { AiOutlinePlus } from "react-icons/ai";
-import { getPlacesById } from "../Utils";
+import { getPlacesByOwner } from "../Utils";
 import Place from "../components/Place";
 const Places = ({ user }) => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await getPlacesById(user._id);
+      const { data } = await getPlacesByOwner(user._id);
       setPlaces(data);
     };
     fetchData();
