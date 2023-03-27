@@ -10,8 +10,8 @@ router.post("/upload-link", verifyToken, uploadByLink);
 //CREATE
 router.post("/:userId",verifyToken,createPlace);
 //GET
-router.get("/:id",verifyToken, getPlace);
+router.get("/:id", getPlace);
 //GET ALL
-router.get("/",verifyToken, getPlaces);
+router.get("/", getPlaces);
 // router.get("/profile",profile);
 export default router;
