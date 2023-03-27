@@ -29,7 +29,7 @@ const Places = ({ user }) => {
       <div className="mt-4">
         {places?.map((place) => {
           return (
-            <div key={place._id} >
+            <div key={place._id} className="bg-gray-200 p-4 rounded-2xl" >
               <h1>{place.title}</h1>
             </div>
           );

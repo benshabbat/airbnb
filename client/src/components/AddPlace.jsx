@@ -21,7 +21,7 @@ const AddPlace = ({user}) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value }));
+    setFormData((prevState) => ({ ...prevState, [name]: value,photos,perks }));
   };
   const onSubmit = async (e) => {
     e.preventDefault();
