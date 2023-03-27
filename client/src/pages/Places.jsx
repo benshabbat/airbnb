@@ -12,7 +12,7 @@ const Places = ({ user }) => {
       setPlaces(data);
     };
     fetchData();
-  }, []);
+  }, [places]);
 
   const { action } = useParams();
   return (
@@ -27,13 +27,14 @@ const Places = ({ user }) => {
         </Link>
       </div>
       {action !== "new" && (
-        <div className="mt-4">
+        <>
           {places?.map((place) => {
             return <Place key={place._id} place={place} />;
           })}
-        </div>
+        </>
       )}
       {action === "new" && <AddPlace user={user} />}
+      
       <Outlet />
     </div>
   );

@@ -1,15 +1,23 @@
 import React from "react";
 import Photo from "./Photo";
+import { Link , useParams } from "react-router-dom";
+import AddPlace from "./AddPlace";
 const Place = ({ place }) => {
+    const { action } = useParams();
   return (
-    <div key={place._id} className="flex gap-4 bg-gray-100 p-4 rounded-2xl">
-      <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {place.photos?.map((link, index) => {
-          return <Photo key={index} link={link} />;
-        })}
-      </div>
-      <h2 className="text-xl">{place.title}</h2>
-      <p>{place.description}</p>
+    <div className="mt-4">
+      <Link to={place._id} className="flex flex-col gap-4 bg-gray-100 p-4 rounded-2xl">
+        <div className="w-32 h-32 grow shrink-0">
+          {place.photos?.map((link, index) => {
+            return <Photo key={index} link={link} />;
+          })}
+        </div>
+        <div className="grow-0 shrink">
+          <h2 className="text-xl">{place.title}</h2>
+          <p className="text-sm mt-2">{place.description}</p>
+        </div>
+      </Link>
+      {action === place._id && <AddPlace/>}
     </div>
   );
 };
