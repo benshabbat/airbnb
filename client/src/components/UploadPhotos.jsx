@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { uploadImageByLink, uploadImages } from "../Utils";
+import Photo from "./Photo";
 const UploadPhotos = ({ setPhotos, photos }) => {
   const [photoLink, setPhotoLink] = useState("");
   const addPhotoLink = async (e) => {
@@ -51,14 +52,7 @@ const UploadPhotos = ({ setPhotos, photos }) => {
       <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {photos.length > 0 &&
           photos.map((link, index) => {
-            return (
-              <div key={index} className="h-32 flex">
-                <img
-                  className="rounded-2xl w-full object-cover"
-                  src={"http://localhost:8080/api/uploads/" + link}
-                />
-              </div>
-            );
+            return <Photo key={index} link={link} />;
           })}
         <label className="flex h-32 item-center justify-center  gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
           <input
