@@ -75,3 +75,19 @@ export const getPlaces = async (req, res, next) => {
     next(error);
   }
 };
+
+
+export const updatePlace = async (req, res, next) => {
+  try {
+    const updatedPlace = await Place.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedPlace);
+  } catch (error) {
+    next(error);
+  }
+};
