@@ -3,7 +3,7 @@ import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
 import { createPlace } from "../Utils";
 import { useNavigate } from "react-router-dom";
-const AddPlace = ({user}) => {
+const AddPlace = ({ user }) => {
   const [photos, setPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   const [formData, setFormData] = useState({
@@ -21,12 +21,17 @@ const AddPlace = ({user}) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({ ...prevState, [name]: value,photos,perks }));
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+      photos,
+      perks,
+    }));
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await createPlace(formData,user._id);
-    navigate("/account/places")
+    await createPlace(formData, user._id);
+    navigate("/account/places");
   };
 
   const preInput = (header, desc) => {
@@ -37,78 +42,58 @@ const AddPlace = ({user}) => {
       </>
     );
   };
+  const inputData = (type, name) => {
+    return (
+      <input
+        type={type}
+        placeholder={name}
+        name={name}
+        onChange={handleChange}
+        // required
+      />
+    );
+  };
+  const textareaData = (type, name) => {
+    return (
+      <textarea
+        type={type}
+        placeholder={name}
+        name={name}
+        onChange={handleChange}
+        // required
+      />
+    );
+  };
 
   return (
     <div>
       {/* <h1 className="text-4xl text-center mb-2">Add Place</h1> */}
       <form onSubmit={onSubmit}>
         {preInput("Title", "Title for your place")}
-        <input
-          type="text"
-          placeholder="title"
-          name="title"
-          onChange={handleChange}
-          // required
-        />
+        {inputData("text", "title")}
         {preInput("Address", "Address for this place")}
-        <input
-          type="text"
-          placeholder="address"
-          name="address"
-          onChange={handleChange}
-          // required
-        />
+        {inputData("text", "address")}
         {preInput("Photos", "more is better")}
         <UploadPhotos setPhotos={setPhotos} photos={photos} />
         {preInput("Description", "Description of the place")}
-        <textarea
-          type="text"
-          placeholder="description"
-          name="description"
-          onChange={handleChange}
-          // required
-        />
+        {textareaData("text", "description")}
         {preInput("Perks", "Select all the perks of your place")}
         <Perks selected={perks} setPerks={setPerks} />
         {preInput("Extra Info", "House rules, etc")}
-        <textarea
-          type="text"
-          placeholder="extraInfo"
-          name="extraInfo"
-          onChange={handleChange}
-          // required
-        />
+        {textareaData("text", "extraInfo")}
         {preInput("Check In & Check out", "Add check in and out")}
         <div className="grid gap-2 sm:grid-cols-3">
           <div>
             <h3 className="mt-2">Check In time</h3>
-            <input
-              type="number"
-              placeholder="14:00"
-              name="checkIn"
-              onChange={handleChange}
-              // required
-            />
+            {inputData("number", "checkIn")}
           </div>
           <div>
             <h3 className="mt-2">Check Out time</h3>
-            <input
-              type="number"
-              placeholder="checkOut"
-              name="checkOut"
-              onChange={handleChange}
-              // required
-            />
+            {inputData("number", "checkOut")}
           </div>
           <div>
             <h3 className="mt-2">Max number of guests</h3>
-            <input
-              type="number"
-              placeholder="maxGuests"
-              name="maxGuests"
-              onChange={handleChange}
-              // required
-            />
+            {inputData("number", "maxGuests")}
           </div>
         </div>
         <button className="primary" type="submit">
