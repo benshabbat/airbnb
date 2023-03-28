@@ -10,7 +10,7 @@ router.post("/upload-link", verifyToken, uploadByLink);
 //CREATE
 router.post("/:userId",verifyToken,createPlace);
 //UPDATE
-router.put("/:id",verifyUser, updatePlace);
+router.put("/place/:id",verifyUser, updatePlace);
 //GET
 router.get("/place/:id", getPlace);
 //GET all for owner

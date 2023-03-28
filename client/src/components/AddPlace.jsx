@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
-import { createPlace } from "../Utils";
+import { createPlace, updatePlace } from "../Utils";
 import { useNavigate } from "react-router-dom";
 import { getPlaceById } from "../Utils";
 const AddPlace = ({ user, place }) => {
   useEffect(() => {
-    if(place){
-
+    if (place) {
       const fetchData = async () => {
         const { data } = await getPlaceById(place?._id);
         setFormData(data);
@@ -42,7 +41,11 @@ const AddPlace = ({ user, place }) => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    await createPlace(formData, user._id);
+    if (place) {
+      await updatePlace(formData, place?._id);
+    } else {
+      await createPlace(formData, user._id);
+    }
     navigate("/account/places");
   };
 

@@ -26,6 +26,7 @@ const Places = ({ user }) => {
           Add new place
         </Link>
       </div>
+
       {action !== "new" && (
         <>
           {places?.map((place) => {
@@ -34,7 +35,7 @@ const Places = ({ user }) => {
         </>
       )}
       {action === "new" && <AddPlace user={user} />}
-      
+
       <Outlet />
     </div>
   );

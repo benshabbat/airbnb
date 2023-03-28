@@ -6,7 +6,8 @@ const Place = ({ place }) => {
   const { action } = useParams();
   return (
     <div className="mt-4">
-      {(action !== place._id) && (
+      {action === place._id && <AddPlace place={place} />}
+      {!action && (
         <Link
           to={place._id}
           className="flex flex-col gap-4 bg-gray-100 p-4 rounded-2xl"
@@ -27,7 +28,6 @@ const Place = ({ place }) => {
           </div>
         </Link>
       )}
-      {action === place._id && <AddPlace place={place} />}
     </div>
   );
 };

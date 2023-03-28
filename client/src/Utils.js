@@ -40,11 +40,11 @@ const uploadImages = (obj) => {
 const createPlace = (obj,id) => {
   return axios.post(`${URL_CREATE_PLACE}/${id}`, obj);
 };
-const updateItem = (url, id, obj) => {
-  return axios.put(`${url}/${id}`, obj);
+const updatePlace = (id, obj) => {
+  return axios.put(`${URL_PLACE}/${id}`, obj);
 };
 const deleteItem = (url, id) => {
   return axios.delete(`${url}/${id}`);
 };
 
-export { getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updateItem, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
+export { getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
