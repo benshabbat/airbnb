@@ -9,6 +9,8 @@ const AddPlace = ({ user, place }) => {
     if (place) {
       const fetchData = async () => {
         const { data } = await getPlaceById(place?._id);
+        setPhotos(data.photos)
+        setPerks(data.perks)
         setFormData(data);
       };
       fetchData();
