@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import Perks from "./Perks";
 import UploadPhotos from "./UploadPhotos";
 import { createPlace, updatePlace } from "../Utils";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getPlaceById } from "../Utils";
 const AddPlace = ({ user, place }) => {
+  const { action } = useParams();
   useEffect(() => {
-    if (place) {
+    if (action===place?._id) {
       const fetchData = async () => {
         const { data } = await getPlaceById(place?._id);
         setPhotos(data.photos)
@@ -43,8 +44,8 @@ const AddPlace = ({ user, place }) => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (place) {
-      await updatePlace(formData, place?._id);
+    if (action) {
+      await updatePlace(formData, action);
     } else {
       await createPlace(formData, user._id);
     }
@@ -64,7 +65,7 @@ const AddPlace = ({ user, place }) => {
       <input
         type={type}
         placeholder={name}
-        value={name}
+        value={formData[name]}
         name={name}
         onChange={handleChange}
         // required
@@ -76,8 +77,9 @@ const AddPlace = ({ user, place }) => {
       <textarea
         type={type}
         placeholder={name}
-        value={name}
+        value={formData[name]}
         name={name}
+        rows={4}
         onChange={handleChange}
         // required
       />
