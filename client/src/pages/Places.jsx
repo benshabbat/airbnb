@@ -6,15 +6,15 @@ import { getPlacesByOwner } from "../Utils";
 import Place from "../components/Place";
 const Places = ({ user }) => {
   const [places, setPlaces] = useState([]);
+  const { action } = useParams();
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await getPlacesByOwner(user._id);
       setPlaces(data);
     };
     fetchData();
-  }, []);
+  }, [action]);
 
-  const { action } = useParams();
   return (
     <div>
       <div className="text-center ">
