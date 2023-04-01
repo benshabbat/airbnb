@@ -1,5 +1,5 @@
 import React from "react";
-import { BsTrash } from "react-icons/bs";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 const Photo = ({photos,setPhotos}) => {
@@ -15,7 +15,7 @@ const Photo = ({photos,setPhotos}) => {
           src={"http://localhost:8080/api/uploads/" + link}
         />
         <button onClick={()=>removePhoto(link)} className="absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl p-1 cursor-pointer">
-          <BsTrash />
+          <FaTrashAlt />
         </button>
       </div>
     );

@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getPlaceById } from "../Utils";
 const AddPlace = ({ user, place }) => {
   const { action } = useParams();
+  const [photos, setPhotos] = useState([]);
+  const [perks, setPerks] = useState([]);
   useEffect(() => {
     if (action===place?._id) {
       const fetchData = async () => {
@@ -18,14 +20,12 @@ const AddPlace = ({ user, place }) => {
     }
   }, [place?._id]);
 
-  const [photos, setPhotos] = useState([]);
-  const [perks, setPerks] = useState([]);
   const [formData, setFormData] = useState({
     title: "",
     address: "",
-    photos,
+    // photos,
     description: "",
-    perks,
+    // perks,
     extraInfo: "",
     checkIn: "",
     checkOut: "",
@@ -44,10 +44,10 @@ const AddPlace = ({ user, place }) => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (action) {
-      await updatePlace(formData, action);
-    } else {
+    if (action==="new") {
       await createPlace(formData, user._id);
+    } else {
+      await updatePlace({formData,photos,perks}, action);
     }
     navigate("/account/places");
   };
