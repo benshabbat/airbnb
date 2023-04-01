@@ -50,10 +50,7 @@ const UploadPhotos = ({ setPhotos, photos }) => {
         </button>
       </div>
       <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {photos.length > 0 &&
-          photos.map((link, index) => {
-            return <Photo key={index} link={link} />;
-          })}
+        {photos.length > 0 && <Photo photos={photos} setPhotos={setPhotos} />}
         <label className="flex h-32 item-center justify-center  gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer">
           <input
             type="file"
