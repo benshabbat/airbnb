@@ -1,5 +1,4 @@
 import React from "react";
-import Photo from "./Photo";
 import { Link, useParams } from "react-router-dom";
 import AddPlace from "./AddPlace";
 import Image from "./Image";

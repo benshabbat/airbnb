@@ -104,7 +104,7 @@ const AddPlace = ({ user, place }) => {
         {preInput("Extra Info", "House rules, etc")}
         {textareaData("text", "extraInfo")}
         {preInput("Check In & Check out", "Add check in and out")}
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <h3 className="mt-2">Check In time</h3>
             {inputData("number", "checkIn")}
@@ -117,10 +117,10 @@ const AddPlace = ({ user, place }) => {
             <h3 className="mt-2">Max number of guests</h3>
             {inputData("number", "maxGuests")}
           </div>
-        </div>
-        <div>
-          <h3 className="mt-2 -mb-1">Price per night</h3>
-          {inputData("number", "price")}
+          <div>
+            <h3 className="mt-2 ">Price per night</h3>
+            {inputData("number", "price")}
+          </div>
         </div>
 
         <button className="primary" type="submit">
