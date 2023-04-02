@@ -20,12 +20,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/place/:id" element={<PlacePage />} />
-          {/* <Route path="/account/:sub?" element={<Account />} /> */}
           <Route path="/account/:sub?/:action?" element={<Account />} />
-          {/* 
-            <Route path="bookings" element={<Booking />} />
-            <Route path="places" element={<Places />} />
-          </Route> */}
         </Route>
       </Routes>
     </BrowserRouter>

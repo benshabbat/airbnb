@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getPlaces } from "../Utils";
-import Place from "../components/Place";
 import Image from "../components/Image";
 import { Link } from "react-router-dom";
+
 const Home = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {

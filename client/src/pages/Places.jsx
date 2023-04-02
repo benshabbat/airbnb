@@ -16,7 +16,7 @@ const Places = ({ user }) => {
   }, [action]);
 
   return (
-    <div>
+    <>
       <div className="text-center ">
         <Link
           className="inline-flex gap-1 bg-red-700 text-white rounded-full py-2 px-6"
@@ -26,7 +26,6 @@ const Places = ({ user }) => {
           Add new place
         </Link>
       </div>
-
       {action !== "new" && (
         <>
           {places?.map((place) => {
@@ -37,7 +36,7 @@ const Places = ({ user }) => {
       {action === "new" && <AddPlace user={user} />}
 
       <Outlet />
-    </div>
+    </>
   );
 };
 
