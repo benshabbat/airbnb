@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
+import Image from "./Image";
 const Photo = ({ photos, setPhotos }) => {
   const removePhoto = (e, link) => {
     e.preventDefault();
@@ -17,10 +17,8 @@ const Photo = ({ photos, setPhotos }) => {
   return photos.map((link, index) => {
     return (
       <div key={index} className="flex h-32 relative">
-        <img
-          className="rounded-2xl w-full object-cover"
-          src={"http://localhost:8080/api/uploads/" + link}
-        />
+        <Image className="rounded-2xl w-full object-cover" src={link} />
+
         <button
           onClick={(e) => removePhoto(e, link)}
           className="absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl p-1 cursor-pointer"

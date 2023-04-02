@@ -2,6 +2,7 @@ import React from "react";
 import Photo from "./Photo";
 import { Link, useParams } from "react-router-dom";
 import AddPlace from "./AddPlace";
+import Image from "./Image";
 const Place = ({ place }) => {
   const { action } = useParams();
   return (
@@ -13,9 +14,9 @@ const Place = ({ place }) => {
           className="flex flex-col gap-4 bg-gray-100 p-4 rounded-2xl"
         >
           <div className="flex w-32 h-32 grow shrink-0">
-            <img
+            <Image
               className="rounded-2xl w-full object-cover"
-              src={"http://localhost:8080/api/uploads/" + place.photos?.[0]}
+              src={place.photos?.[0]}
             />
 
             {/* {place.photos?.map((link, index) => {
