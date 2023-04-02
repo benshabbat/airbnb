@@ -9,11 +9,11 @@ const AddPlace = ({ user, place }) => {
   const [photos, setPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   useEffect(() => {
-    if (action===place?._id) {
+    if (action === place?._id) {
       const fetchData = async () => {
         const { data } = await getPlaceById(place?._id);
-        setPhotos(data.photos)
-        setPerks(data.perks)
+        setPhotos(data.photos);
+        setPerks(data.perks);
         setFormData(data);
       };
       fetchData();
@@ -30,6 +30,7 @@ const AddPlace = ({ user, place }) => {
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
+    price: 100,
   });
   const navigate = useNavigate();
 
@@ -44,10 +45,10 @@ const AddPlace = ({ user, place }) => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (action==="new") {
+    if (action === "new") {
       await createPlace(formData, user._id);
     } else {
-      await updatePlace({formData,photos,perks}, action);
+      await updatePlace({ ...formData, photos, perks }, action);
     }
     navigate("/account/places");
   };
@@ -117,6 +118,11 @@ const AddPlace = ({ user, place }) => {
             {inputData("number", "maxGuests")}
           </div>
         </div>
+        <div>
+          <h3 className="mt-2 -mb-1">Price per night</h3>
+          {inputData("number", "price")}
+        </div>
+
         <button className="primary" type="submit">
           Add Place
         </button>
