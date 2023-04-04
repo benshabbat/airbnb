@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPlaceById } from "../Utils";
 import PhotosForPlacePage from "../components/PhotosForPlacePage";
+import { BiMap } from "react-icons/bi";
+import Description from "../components/Description";
+import Booking from "../components/Booking";
 const PlacePage = () => {
   const [place, setPlace] = useState({});
   const { id } = useParams();
@@ -17,13 +20,18 @@ const PlacePage = () => {
     <div className="mt-8 bg-gray-100 ">
       <h1 className="text-3xl">{place.title}</h1>
       <a
-        className="block font-semibold underline my-2"
+        className="flex gap-1 my-3 font-semibold underline "
         target="_blank"
         href={"https://maps.google.com/?q=" + place.address}
       >
+        <BiMap />
         {place.address}
       </a>
-      <PhotosForPlacePage photos={place?.photos} />
+      <PhotosForPlacePage place={place} />
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr]">
+        <Description place={place} />
+        <Booking place={place}/>
+      </div>
     </div>
   );
 };

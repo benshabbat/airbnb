@@ -107,11 +107,11 @@ const AddPlace = ({ user, place }) => {
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>
             <h3 className="mt-2">Check In time</h3>
-            {inputData("number", "checkIn")}
+            {inputData("date", "checkIn")}
           </div>
           <div>
             <h3 className="mt-2">Check Out time</h3>
-            {inputData("number", "checkOut")}
+            {inputData("date", "checkOut")}
           </div>
           <div>
             <h3 className="mt-2">Max number of guests</h3>
