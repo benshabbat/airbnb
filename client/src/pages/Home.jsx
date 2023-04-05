@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getPlaces } from "../Utils";
 import Image from "../components/Image";
 import { Link } from "react-router-dom";
-
+import { AiOutlineHeart } from "react-icons/ai";
 const Home = () => {
   const [places, setPlaces] = useState([]);
   useEffect(() => {
@@ -17,11 +17,16 @@ const Home = () => {
       {places?.map((place) => {
         return (
           <Link to={"/place/" + place._id} key={place._id}>
-            <div className="bg-gray-500 mb-2 rounded-2xl flex">
+            <div className="bg-gray-500 mb-2 rounded-2xl flex relative">
               <Image
                 className="rounded-2xl object-cover aspect-square"
                 src={place.photos?.[0]}
               />
+              <button
+                className="absolute top-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl p-1 cursor-pointer"
+              >
+                <AiOutlineHeart />
+              </button>
             </div>
             <h2 className="font-bold">{place.address}</h2>
             <h3 className="text-sm text-gray-500">{place.title}</h3>
