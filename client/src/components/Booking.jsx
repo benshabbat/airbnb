@@ -7,6 +7,8 @@ const Booking = ({ place }) => {
     checkOut: "",
     maxGuests: 1,
     price: place?.price,
+    name: "",
+    phone: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,7 +50,14 @@ const Booking = ({ place }) => {
             <label>Number Of Guests:</label>
             {inputData("number", "maxGuests", handleChange, formData)}
           </div>
-
+          {numberOfDays > 0 && (
+            <div className="py-3 px-4 border-t">
+              <label>Your full name:</label>
+              {inputData("text", "name", handleChange, formData)}
+              <label>Number Of Phone:</label>
+              {inputData("tel", "phone", handleChange, formData)}
+            </div>
+          )}
           <button className="primary" type="submit">
             Booking ${numberOfDays * place?.price * formData.maxGuests}
           </button>
