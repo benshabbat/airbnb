@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "../components/Image";
-import { AiFillCloseCircle,AiFillPicture } from "react-icons/ai";
+import { AiFillCloseCircle, AiFillPicture } from "react-icons/ai";
 
 const PhotosForPlacePage = ({ place }) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
@@ -8,7 +8,7 @@ const PhotosForPlacePage = ({ place }) => {
     return (
       <div className="absolute inset-0 bg-black text-white min-h-screen">
         <div className=" bg-black p-8 grid gap-4">
-        <h2 className="text-3xl mr-36">Photos of {place?.title}</h2>
+          <h2 className="text-3xl mr-36">Photos of {place?.title}</h2>
           <button
             className="fixed right-8 top-8 py-2 px-4 rounded-2xl bg-gray-200 text-black"
             onClick={() => setShowAllPhotos(!showAllPhotos)}
@@ -51,7 +51,7 @@ const PhotosForPlacePage = ({ place }) => {
         onClick={() => setShowAllPhotos(!showAllPhotos)}
         className="flex gap-1 absolute bottom-2 right-2 py-2 px-4 bg-white rounded-2xl border border-black "
       >
-        <AiFillPicture className="h-6"/> Show all photos
+        <AiFillPicture className="h-6" /> Show all photos
       </button>
     </div>
   );
