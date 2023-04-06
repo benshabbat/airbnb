@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import {inputData} from "../UtilsInput"
 const Booking = ({ place }) => {
   const [formData, setFormData] = useState({
     checkIn: "",
@@ -14,18 +14,10 @@ const Booking = ({ place }) => {
       [name]: value,
     }));
   };
-  const inputData = (type, name) => {
-    return (
-      <input
-        type={type}
-        placeholder={name}
-        value={formData[name]}
-        name={name}
-        onChange={handleChange}
-        // required
-      />
-    );
+  const onSubmit = async (e) => {
+    e.preventDefault();
   };
+
   return (
     <div className="bg-gray-100 shadow p-4 rounded-2xl my-4">
       <form onSubmit={onSubmit}>
@@ -36,16 +28,16 @@ const Booking = ({ place }) => {
           <div className="flex">
             <div className="py-3 px-4">
               <label>Check In:</label>
-              {inputData("date", "checkIn")}
+              {inputData("date", "checkIn",handleChange,formData)}
             </div>
             <div className="py-3 px-4 border-l">
               <label>Check Out:</label>
-              {inputData("date", "checkOut")}
+              {inputData("date", "checkOut",handleChange,formData)}
             </div>
           </div>
           <div className="py-3 px-4 border-t">
             <label>Number Of Guests:</label>
-            {inputData("number", "maxGuests")}
+            {inputData("number", "maxGuests",handleChange,formData)}
           </div>
           <button className="primary" type="submit">
             Booking

@@ -7,6 +7,8 @@ const URL_UPLOAD ="/places/upload"
 const URL_CREATE_PLACE ="/places"
 const URL_PLACES ="/places"
 const URL_PLACE ="/places/place"
+
+
 const getPlaces = () => {
   return axios.get(URL_PLACES);
 };
