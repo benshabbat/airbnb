@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {inputData} from "../UtilsInput"
+import { inputData } from "../UtilsInput";
+import { differenceInCalendarDays } from "date-fns";
 const Booking = ({ place }) => {
   const [formData, setFormData] = useState({
     checkIn: "",
@@ -14,6 +15,14 @@ const Booking = ({ place }) => {
       [name]: value,
     }));
   };
+  let numberOfDays = 0;
+  if (formData.checkIn && formData.checkOut) {
+    numberOfDays = differenceInCalendarDays(
+      new Date(formData.checkOut),
+      new Date(formData.checkIn)
+    );
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
   };
@@ -28,19 +37,20 @@ const Booking = ({ place }) => {
           <div className="flex">
             <div className="py-3 px-4">
               <label>Check In:</label>
-              {inputData("date", "checkIn",handleChange,formData)}
+              {inputData("date", "checkIn", handleChange, formData)}
             </div>
             <div className="py-3 px-4 border-l">
               <label>Check Out:</label>
-              {inputData("date", "checkOut",handleChange,formData)}
+              {inputData("date", "checkOut", handleChange, formData)}
             </div>
           </div>
           <div className="py-3 px-4 border-t">
             <label>Number Of Guests:</label>
-            {inputData("number", "maxGuests",handleChange,formData)}
+            {inputData("number", "maxGuests", handleChange, formData)}
           </div>
+
           <button className="primary" type="submit">
-            Booking
+            Booking ${numberOfDays * place?.price * formData.maxGuests}
           </button>
         </div>
       </form>
