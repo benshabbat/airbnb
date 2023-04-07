@@ -9,8 +9,7 @@ const Bookings = ({ user }) => {
       if (user?._id) {
         const { data } = await getBookingsByOwner(user?._id);
         setBookings(data);
-      }
-      else{
+      } else {
         const { data } = await getBookings();
         setBookings(data);
       }
@@ -20,7 +19,13 @@ const Bookings = ({ user }) => {
   return (
     <div>
       {bookings?.map?.((booking) => {
-        return <div key={booking._id}>{booking.checkIn}</div>;
+        return (
+          <div key={booking._id}>
+            <div>
+              {booking.checkIn}  {booking.checkOut}
+            </div>
+          </div>
+        );
       })}
     </div>
   );
