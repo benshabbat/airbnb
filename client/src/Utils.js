@@ -13,6 +13,12 @@ const URL_BOOKING ="/bookings"
 const getPlaces = () => {
   return axios.get(URL_PLACES);
 };
+const getBookings = () => {
+  return axios.get(URL_BOOKING);
+};
+const getBookingsByOwner = (id) => {
+  return axios.get(`${URL_BOOKING}/${id}`);
+};
 const getById = (url, id) => {
   return axios.get(`${url}/${id}`);
 };
@@ -53,4 +59,4 @@ const deleteItem = (url, id) => {
   return axios.delete(`${url}/${id}`);
 };
 
-export { createBooking,getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
+export {getBookingsByOwner,getBookings, createBooking,getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
