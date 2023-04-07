@@ -6,7 +6,7 @@ const Booking = ({ place }) => {
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
-    price: place?.price,
+    price: 0,
     name: "",
     phone: "",
   });

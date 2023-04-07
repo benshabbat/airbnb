@@ -6,6 +6,7 @@ import connectDB from "./config/db.js"
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import placeRoute from "./routes/places.js";
+import bookingRoute from "./routes/bookings.js";
 const app= express();
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.use(cors({
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/places", placeRoute);
+app.use("/api/bookings", bookingRoute);
 
 app.listen(8080, () => {
     connectDB();

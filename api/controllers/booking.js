@@ -2,7 +2,7 @@ import Booking from "../models/Booking.js";
 
 export const createBooking = async (req, res, next) => {
     const userId = req.params.userId;
-    const newBooking = new Booking({...req.body});
+    const newBooking = new Booking({...req.body,user:userId});
     try {
       const savedBooking = await newBooking.save();
       try{
@@ -17,3 +17,12 @@ export const createBooking = async (req, res, next) => {
       next(err);
     }
   };
+  export const getBookings = async (req, res, next) => {
+    try {
+      const bookings = await Booking.find();
+      res.status(200).json(bookings);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
