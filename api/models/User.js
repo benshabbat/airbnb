@@ -16,6 +16,12 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    places: {
+      type: [{type:SchemaTypes.ObjectId,ref:'Place'}]
+    },
+    bookings: {
+      type: [{type:SchemaTypes.ObjectId,ref:'Booking'}]
+    },
   },
   { timestamps: true }
 );
