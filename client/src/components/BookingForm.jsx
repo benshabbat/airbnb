@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { inputData } from "../UtilsInput";
 import { differenceInCalendarDays } from "date-fns";
 import { createBooking } from "../Utils";
 const Booking = ({ place }) => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -14,6 +16,14 @@ const Booking = ({ place }) => {
     name: "",
     phone: "",
   });
+  useEffect(() => {
+    if (user) {
+      setFormData((prevState) => ({
+        ...prevState,
+        name: user.username,
+      }));
+    }
+  }, [user]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
