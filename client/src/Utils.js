@@ -7,6 +7,7 @@ const URL_UPLOAD ="/places/upload"
 const URL_CREATE_PLACE ="/places"
 const URL_PLACES ="/places"
 const URL_PLACE ="/places/place"
+const URL_BOOKING ="/bookings"
 
 
 const getPlaces = () => {
@@ -45,8 +46,11 @@ const createPlace = (obj,id) => {
 const updatePlace = (obj,id) => {
   return axios.put(`${URL_PLACE}/${id}`, obj);
 };
+const createBooking = (obj,id) => {
+  return axios.post(`${URL_BOOKING}/${id}`, obj);
+};
 const deleteItem = (url, id) => {
   return axios.delete(`${url}/${id}`);
 };
 
-export { getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
+export { createBooking,getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };

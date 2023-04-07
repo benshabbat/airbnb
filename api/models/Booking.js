@@ -3,7 +3,7 @@ const { Schema, SchemaTypes } = mongoose;
 
 const BookingSchema = new mongoose.Schema(
   {
-    user: {
+    owner: {
       type: SchemaTypes.ObjectId,
       ref: "User",
       required: true,

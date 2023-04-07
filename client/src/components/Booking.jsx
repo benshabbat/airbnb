@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { inputData } from "../UtilsInput";
 import { differenceInCalendarDays } from "date-fns";
+import { createBooking } from "../Utils";
 const Booking = ({ place }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     checkIn: "",
     checkOut: "",
@@ -27,6 +31,10 @@ const Booking = ({ place }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (id) {
+      await createBooking({ ...formData, place:id, user:place?.owner,price:(numberOfDays * place?.price * formData.maxGuests) }, place?.owner);
+    }
+    navigate("/bookings");
   };
 
   return (
