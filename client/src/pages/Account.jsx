@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import NavAccount from "../components/NavAccount";
 import Places from "./Places";
 import Profile from "./Profile";
+import Bookings from "./Bookings";
 const Account = () => {
   const { user } = useContext(AuthContext);
 
