@@ -34,7 +34,7 @@ const Booking = ({ place }) => {
     if (id) {
       await createBooking({ ...formData, place:id, user:place?.owner,price:(numberOfDays * place?.price * formData.maxGuests) }, place?.owner);
     }
-    navigate("/bookings");
+    navigate("/account/bookings");
   };
 
   return (

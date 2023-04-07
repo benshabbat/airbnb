@@ -25,3 +25,11 @@ export const getBookings = async (req, res, next) => {
     next(error);
   }
 };
+export const getBookingsByOwner = async (req, res, next) => {
+  try {
+    const bookings = await Booking.find({owner:req.params.ownerId});
+    res.status(200).json(bookings);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -20,6 +20,7 @@ const Account = () => {
       <NavAccount />
       {sub === "profile" && <Profile user={user} />}
       {sub === "places" && <Places user={user} />}
+      {sub === "bookings" && <Bookings user={user} />}
     </div>
   );
 };

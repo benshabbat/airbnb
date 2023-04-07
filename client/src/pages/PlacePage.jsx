@@ -4,7 +4,7 @@ import { getPlaceById } from "../Utils";
 import PhotosForPlacePage from "../components/PhotosForPlacePage";
 import { BiMap } from "react-icons/bi";
 import Description from "../components/Description";
-import Booking from "../components/Booking";
+import BookingForm from "../components/BookingForm";
 const PlacePage = () => {
   const [place, setPlace] = useState({});
   const { id } = useParams();
@@ -30,7 +30,7 @@ const PlacePage = () => {
       <PhotosForPlacePage place={place} />
       <div className="grid grid-cols-1 mt-8 gap-8 md:grid-cols-[2fr_1fr]">
         <Description place={place} />
-        <Booking place={place}/>
+        <BookingForm place={place}/>
       </div>
       <h2 className="font-semibold text-2xl">Extra Info</h2>
       <div className="text-sm text-gray-600">
