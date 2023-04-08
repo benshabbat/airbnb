@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPlaces } from "../Utils";
-import Image from "../components/Image";
+import PlaceImg from "../components/PlaceImg";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 const Home = () => {
@@ -18,13 +18,11 @@ const Home = () => {
         return (
           <Link to={"/place/" + place._id} key={place._id}>
             <div className="bg-gray-500 mb-2 rounded-2xl flex relative">
-              <Image
-                className="rounded-2xl object-cover aspect-square"
-                src={place.photos?.[0]}
+              <PlaceImg
+                className={"rounded-2xl object-cover aspect-square"}
+                place={place}
               />
-              <button
-                className="absolute top-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl p-1 cursor-pointer"
-              >
+              <button className="absolute top-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl p-1 cursor-pointer">
                 <AiOutlineHeart />
               </button>
             </div>

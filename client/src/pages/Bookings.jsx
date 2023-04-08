@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getBookings, getBookingsByOwner } from "../Utils";
 import { useParams } from "react-router-dom";
+import PlaceImg from "../components/PlaceImg";
 const Bookings = ({ user }) => {
   const [bookings, setBookings] = useState([]);
   const { action } = useParams();
@@ -22,7 +23,10 @@ const Bookings = ({ user }) => {
         return (
           <div key={booking._id}>
             <div>
-              {booking.checkIn}  {booking.checkOut}
+              <div className="w-48">
+                <PlaceImg place={booking.place} />
+              </div>
+              {booking.checkIn} {booking.checkOut}
             </div>
           </div>
         );
