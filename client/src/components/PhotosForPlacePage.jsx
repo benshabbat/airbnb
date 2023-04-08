@@ -26,24 +26,30 @@ const PhotosForPlacePage = ({ place }) => {
     <div className="relative">
       <div className="grid gap-2 grid-cols-[2fr_1fr] rounded-3xl overflow-hidden ">
         <div>
-          <Image
-            className="object-cover aspect-square cursor-pointer "
-            src={place?.photos?.[0]}
-            onClick={() => setShowAllPhotos(!showAllPhotos)}
-          />
-        </div>
-        <div className="grid">
-          <Image
-            className="object-cover aspect-square cursor-pointer "
-            src={place?.photos?.[1]}
-            onClick={() => setShowAllPhotos(!showAllPhotos)}
-          />
-          <div className="overflow-hidden">
+          {place.photos?.[0] && (
             <Image
-              className="object-cover aspect-square relative top-2 cursor-pointer "
-              src={place?.photos?.[2]}
+              className="object-cover aspect-square cursor-pointer "
+              src={place?.photos?.[0]}
               onClick={() => setShowAllPhotos(!showAllPhotos)}
             />
+          )}
+        </div>
+        <div className="grid">
+          {place.photos?.[1] && (
+            <Image
+              className="object-cover aspect-square cursor-pointer "
+              src={place?.photos?.[1]}
+              onClick={() => setShowAllPhotos(!showAllPhotos)}
+            />
+          )}
+          <div className="overflow-hidden">
+            {place.photos?.[2] && (
+              <Image
+                className="object-cover aspect-square relative top-2 cursor-pointer "
+                src={place?.photos?.[2]}
+                onClick={() => setShowAllPhotos(!showAllPhotos)}
+              />
+            )}
           </div>
         </div>
       </div>
