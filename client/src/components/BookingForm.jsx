@@ -12,7 +12,7 @@ const Booking = ({ place }) => {
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
-    price: 0,
+    priceTotal: 0,
     name: "",
     phone: "",
   });
@@ -42,7 +42,7 @@ const Booking = ({ place }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      await createBooking({ ...formData, place:id, user:place?.owner,price:(numberOfDays * place?.price * formData.maxGuests) }, place?.owner);
+      await createBooking({ ...formData, place:id, user:place?.owner,priceTotal:(numberOfDays * place?.price * formData.maxGuests) }, place?.owner);
     }
     navigate("/account/bookings");
   };
