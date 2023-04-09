@@ -1,8 +1,9 @@
 import React from 'react'
-
+import { useParams } from "react-router-dom";
 const Booking = () => {
+  const { action } = useParams();
   return (
-    <div>Booking</div>
+    <div>Booking : {action}</div>
   )
 }
 

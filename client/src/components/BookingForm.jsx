@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { inputData } from "../UtilsInput";
 import { differenceInCalendarDays } from "date-fns";
 import { createBooking } from "../Utils";
-const Booking = ({ place }) => {
+const BookingForm = ({ place }) => {
   const { user } = useContext(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -85,4 +85,4 @@ const Booking = ({ place }) => {
   );
 };
 
-export default Booking;
+export default BookingForm;

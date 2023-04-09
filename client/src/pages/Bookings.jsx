@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getBookings, getBookingsByOwner } from "../Utils";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import PlaceImg from "../components/PlaceImg";
 import { format } from "date-fns";
 import { BiCalendar } from "react-icons/bi";
 import { GiNightSleep } from "react-icons/gi";
 import { FaMoneyBillAlt } from "react-icons/fa";
+import Booking from "../components/Booking";
 const Bookings = ({ user }) => {
   const [bookings, setBookings] = useState([]);
   const { action } = useParams();
@@ -24,9 +25,9 @@ const Bookings = ({ user }) => {
 
   return (
     <div>
-      {bookings?.map?.((booking) => {
+      {!action&&(bookings?.map?.((booking) => {
         return (
-          <div key={booking._id}>
+          <Link to={`/account/bookings/${booking._id}`}key={booking._id}>
             <div className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden">
               <div className="w-48">
                 <PlaceImg
@@ -54,9 +55,10 @@ const Bookings = ({ user }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         );
-      })}
+      }))}
+       {action && <Booking/>}
     </div>
   );
 };
