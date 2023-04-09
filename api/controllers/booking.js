@@ -27,7 +27,7 @@ export const getBookings = async (req, res, next) => {
 };
 export const getBooking = async (req, res, next) => {
   try {
-    const bookings = await Booking.findById(req.params.id);
+    const bookings = await Booking.findById(req.params.id).populate("owner").populate("place");
     res.status(200).json(bookings);
   } catch (error) {
     next(error);

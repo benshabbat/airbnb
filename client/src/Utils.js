@@ -7,17 +7,18 @@ const URL_UPLOAD ="/places/upload"
 const URL_CREATE_PLACE ="/places"
 const URL_PLACES ="/places"
 const URL_PLACE ="/places/place"
-const URL_BOOKING ="/bookings"
+const URL_BOOKINGS ="/bookings"
+const URL_BOOKING ="/bookings/booking"
 
 
 const getPlaces = () => {
   return axios.get(URL_PLACES);
 };
 const getBookings = () => {
-  return axios.get(URL_BOOKING);
+  return axios.get(URL_BOOKINGS);
 };
 const getBookingsByOwner = (id) => {
-  return axios.get(`${URL_BOOKING}/${id}`);
+  return axios.get(`${URL_BOOKINGS}/${id}`);
 };
 const getById = (url, id) => {
   return axios.get(`${url}/${id}`);
@@ -27,6 +28,9 @@ const getPlacesByOwner = (id) => {
 };
 const getPlaceById = (id) => {
   return axios.get(`${URL_PLACE}/${id}`);
+};
+const getBookingById = (id) => {
+  return axios.get(`${URL_BOOKING}/${id}`);
 };
 const login = (obj) => {
   return axios.post(URL_LOGIN, obj);
@@ -59,4 +63,4 @@ const deleteItem = (url, id) => {
   return axios.delete(`${url}/${id}`);
 };
 
-export {getBookingsByOwner,getBookings, createBooking,getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
+export {getBookingById,getBookingsByOwner,getBookings, createBooking,getPlaces,getPlaceById,getPlacesByOwner, getById, createPlace, updatePlace, deleteItem, register, login,logout,uploadImageByLink,uploadImages };
